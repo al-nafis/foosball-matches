@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item_matches"
+        android:icon="@drawable/matches"
+        android:title="@string/menu_item_matches" />
+
+    <item
+        android:id="@+id/menu_item_ranking"
+        android:icon="@drawable/ranking"
+        android:title="@string/menu_item_ranking" />
+
+    <item
+        android:id="@+id/menu_item_players"
+        android:icon="@drawable/players"
+        android:title="@string/menu_item_players" />
+
+    <item
+        android:id="@+id/menu_item_settings"
+        android:icon="@drawable/settings"
+        android:title="@string/menu_item_settings" />
+</menu>

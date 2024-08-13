@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Foosball Matches</string>
+    <string name="menu_item_matches">Matches</string>
+    <string name="menu_item_ranking">Ranking</string>
+    <string name="menu_item_players">Players</string>
+    <string name="menu_item_settings">Settings</string>
+</resources>
