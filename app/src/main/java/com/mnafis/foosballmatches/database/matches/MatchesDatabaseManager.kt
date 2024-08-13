@@ -17,6 +17,10 @@ class MatchesDatabaseManager @Inject constructor(
         matchesDAO.addNewMatch(match)
     }.addDataBaseSchedulers()
 
+    override fun addNewMatches(matches: List<Match>) = Completable.fromCallable {
+        matches.forEach { matchesDAO.addNewMatch(it) }
+    }.addDataBaseSchedulers()
+
     override fun updateMatch(match: Match): Completable = Completable.fromCallable {
         matchesDAO.updateMatch(match)
     }.addDataBaseSchedulers()

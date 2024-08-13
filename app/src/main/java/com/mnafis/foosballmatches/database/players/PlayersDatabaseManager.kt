@@ -24,6 +24,10 @@ class PlayersDatabaseManager(
         }
     }.addDataBaseSchedulers()
 
+    override fun addNewPlayers(players: List<Player>) = Completable.fromCallable {
+        players.forEach { playersDAO.addPlayer(it) }
+    }.addDataBaseSchedulers()
+
     override fun updatePlayer(player: Player) = Completable.fromCallable {
         playersDAO.updatePlayer(player)
     }.addDataBaseSchedulers()

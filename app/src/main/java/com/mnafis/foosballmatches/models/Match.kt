@@ -10,10 +10,12 @@ data class Match(
     @PrimaryKey val id: Long,
     @Embedded val dateInfo: DateInfo,
     val player1Id: Int,
+    val player1Name: String,
     val player1Score: Int,
     val player2Id: Int,
+    val player2Name: String,
     val player2Score: Int,
-    val winnerId: Int
+    val winner: String
 ) : Serializable
 
 @Entity
