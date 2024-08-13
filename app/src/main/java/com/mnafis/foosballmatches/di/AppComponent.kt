@@ -7,7 +7,8 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [
-        AppModule::class,
+    AppModule::class,
+    SharedModule::class
 ])
 interface AppComponent {
     fun inject(activity: MainActivity)

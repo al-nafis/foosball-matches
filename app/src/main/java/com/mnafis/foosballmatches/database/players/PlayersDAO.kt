@@ -24,4 +24,7 @@ interface PlayersDAO {
 
     @Query("SELECT * FROM Player")
     fun getAllPlayers(): List<Player>
+
+    @Query("SELECT * FROM Player WHERE employeeId = :employeeId")
+    fun getPlayerById(employeeId: Int): List<Player>
 }

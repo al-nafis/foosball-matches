@@ -1,15 +1,14 @@
 package com.mnafis.foosballmatches.di
 
-import android.app.Application
-import com.mnafis.foosballmatches.FoosballApplication
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class AppModule {
+class AppModule(private val context: Context) {
 
-//    @Provides
-//    @Singleton
-//    fun provideApplication(application: Application): FoosballApplication = application as FoosballApplication
+    @Provides
+    @Singleton
+    fun provideApplication(): Context = context
 }
