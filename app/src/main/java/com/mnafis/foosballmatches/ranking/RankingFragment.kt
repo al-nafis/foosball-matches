@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.mnafis.foosballmatches.MainActivity
 import com.mnafis.foosballmatches.R
 
 class RankingFragment : Fragment() {
@@ -14,5 +15,10 @@ class RankingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_ranking, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).setToolbarTitle(R.string.menu_title_ranking)
     }
 }
