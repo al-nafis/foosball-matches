@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingHorizontal="@dimen/page_margin_horizontal">
+    android:padding="@dimen/page_margin_horizontal">
 
     <ImageView
-        android:id="@+id/toolbar_logo"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/toolbar_start_logo"
+        android:layout_width="@dimen/toolbar_start_icon_size"
+        android:layout_height="@dimen/toolbar_start_icon_size"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,5 +25,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/toolbar_end_logo"
+        android:layout_width="@dimen/toolbar_start_icon_size"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/theme"
+        tools:src="@android:drawable/ic_input_add"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.mnafis.foosballmatches.di
 
 import com.mnafis.foosballmatches.MainActivity
 import com.mnafis.foosballmatches.matches.MatchesFragment
+import com.mnafis.foosballmatches.matches.details.MatchDetailsActivity
 import dagger.Component
 import javax.inject.Singleton
 
@@ -12,5 +13,6 @@ import javax.inject.Singleton
 ])
 interface AppComponent {
     fun inject(activity: MainActivity)
+    fun inject(activity: MatchDetailsActivity)
     fun inject(fragment: MatchesFragment)
 }

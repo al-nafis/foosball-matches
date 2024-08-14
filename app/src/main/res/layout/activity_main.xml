@@ -22,11 +22,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/activity_main_toolbar"
-        app:layout_constraintBottom_toTopOf="@id/activity_main_bottom_navigation_view"/>
+        app:layout_constraintBottom_toTopOf="@id/activity_main_bottom_navigation_top_border"/>
+
+    <View
+        android:id="@+id/activity_main_bottom_navigation_top_border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/off_white"
+        app:layout_constraintBottom_toTopOf="@id/activity_main_bottom_navigation_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/activity_main_bottom_navigation_view"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

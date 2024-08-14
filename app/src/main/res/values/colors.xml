@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="off_white">#EFEFEF</color>
     <color name="theme">#0074d9</color>
     <color name="menu_icon_unchecked">@color/black</color>
 </resources>

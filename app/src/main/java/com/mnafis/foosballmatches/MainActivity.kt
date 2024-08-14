@@ -1,6 +1,8 @@
 package com.mnafis.foosballmatches
 
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.StringRes
@@ -17,11 +19,10 @@ import com.mnafis.foosballmatches.settings.SettingsFragment
 import com.mnafis.foosballmatches.tools.sampleMatches
 import com.mnafis.foosballmatches.tools.samplePlayers
 import io.reactivex.Completable
-import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     @Inject
     lateinit var playersRepository: PlayersRepository
@@ -37,17 +38,12 @@ class MainActivity : AppCompatActivity() {
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
 
         setupBottomNavigationView()
         populateSampleDataIfThereIsNone()
-    }
-
-    fun setToolbarTitle(@StringRes title: Int) {
-        val toolBarTitle: TextView? = findViewById(R.id.toolbar_title)
-        toolBarTitle?.text = getString(title)
     }
 
     private fun setupBottomNavigationView() {
