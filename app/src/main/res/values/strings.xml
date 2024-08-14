@@ -34,4 +34,8 @@
     <string name="ranking_sort_type_most_losses">Most Losses</string>
     <string name="ranking_sort_type_total_played">Total Played</string>
     <string name="ranking_sort_type_dialog_header">Select a sort type</string>
+    <string name="fragment_settings_clear_data_header">Clear all data</string>
+    <string name="fragment_settings_clear_data_button">Clear</string>
+    <string name="fragment_settings_populate_data_header">Populate sample data when database is empty</string>
+    <string name="fragment_settings_populate_data_button">Populate</string>
 </resources>

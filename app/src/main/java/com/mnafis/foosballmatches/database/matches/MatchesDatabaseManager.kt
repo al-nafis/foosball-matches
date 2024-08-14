@@ -29,6 +29,10 @@ class MatchesDatabaseManager @Inject constructor(
         matchesDAO.deleteMatch(match)
     }.addDataBaseSchedulers()
 
+    override fun deleteAllMatches() = Completable.fromCallable {
+        matchesDAO.deleteAllMatches()
+    }.addDataBaseSchedulers()
+
     override fun getAllMatches(): Single<List<Match>> = Single.fromCallable {
         matchesDAO.getAllMatches()
     }.addDataBaseSchedulers()

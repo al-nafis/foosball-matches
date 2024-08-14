@@ -5,16 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.mnafis.foosballmatches.FoosballApplication
 import com.mnafis.foosballmatches.MainActivity
 import com.mnafis.foosballmatches.R
 import com.mnafis.foosballmatches.database.matches.MatchesRepository
 import com.mnafis.foosballmatches.database.players.PlayersRepository
-import com.mnafis.foosballmatches.tools.sampleMatches
-import com.mnafis.foosballmatches.tools.samplePlayers
-import io.reactivex.Completable
-import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 class SettingsFragment : Fragment() {
@@ -23,6 +21,11 @@ class SettingsFragment : Fragment() {
 
     @Inject
     lateinit var matchesRepository: MatchesRepository
+
+    @Inject
+    lateinit var settingsViewModelFactory: SettingsViewModelFactory
+
+    private lateinit var viewModel: SettingsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,44 +36,41 @@ class SettingsFragment : Fragment() {
     }
 
     override fun onAttach(context: Context) {
-        (activity?.application as FoosballApplication).appComponent.inject(this)
         super.onAttach(context)
+
+        (activity?.application as FoosballApplication).appComponent.inject(this)
+        viewModel = ViewModelProvider(this, settingsViewModelFactory)[SettingsViewModel::class]
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).resetToolbarTrailerIcon()
         (activity as MainActivity).setToolbarTitle(R.string.menu_title_settings)
-        populateSampleDataIfThereIsNone()
+
+        setupUi()
     }
 
-    //sample data entry
-    private val disposable = CompositeDisposable()
-    private fun populateSampleDataIfThereIsNone() {
-        disposable.addAll(
-            playersRepository.getAllPlayers()
-                .flatMapCompletable { players ->
-                    if (players.isEmpty()) {
-                        playersRepository.addNewPlayers(samplePlayers)
-                    } else {
-                        Completable.error(Exception("Players exist already"))
-                    }
-                }.subscribe(
-                    { println("ABID: sample players added") },
-                    { println("ABID: sample players adding error: ${it.message}") }
-                ),
-            matchesRepository.getAllMatches().flatMapCompletable { matches ->
-                if (matches.isEmpty()) {
-                    matchesRepository.addNewMatches(sampleMatches)
-                } else {
-                    Completable.error(Exception("Matches exist already"))
-                }
-            }.subscribe(
-                {
-                    println("ABID: sample matches added")
-                    disposable.dispose()
-                },
-                { println("ABID: sample matches adding error: ${it.message}") }
-            )
-        )
+    private fun setupUi() {
+        val clearButton = activity?.findViewById<Button>(R.id.fragment_settings_clear_data_button)
+        val populateButton = activity?.findViewById<Button>(R.id.fragment_settings_populate_data_button)
+
+        clearButton?.setOnClickListener {
+            viewModel.clearDatabase()
+        }
+
+        populateButton?.setOnClickListener {
+            viewModel.populateDatabase()
+        }
+
+        viewModel.isDatabaseEmpty.observe(viewLifecycleOwner) {
+            clearButton?.isEnabled = !it
+            populateButton?.isEnabled = it
+        }
+        viewModel.checkIfDatabaseIsEmpty()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.disposeDisposables()
     }
 }

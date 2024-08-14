@@ -45,6 +45,11 @@ class RankingFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_ranking, container, false)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.disposeDisposables()
+    }
+
     override fun onResume() {
         super.onResume()
 

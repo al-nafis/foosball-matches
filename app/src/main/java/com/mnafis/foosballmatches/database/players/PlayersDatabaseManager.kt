@@ -36,6 +36,10 @@ class PlayersDatabaseManager(
         playersDAO.deletePlayer(player)
     }.addDataBaseSchedulers()
 
+    override fun deleteAllPlayers() = Completable.fromCallable {
+        playersDAO.deleteAllPlayers()
+    }.addDataBaseSchedulers()
+
     override fun getAllPlayers() = Single.fromCallable {
         playersDAO.getAllPlayers()
     }.addDataBaseSchedulers()

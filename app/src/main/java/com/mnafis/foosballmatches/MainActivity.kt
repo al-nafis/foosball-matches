@@ -2,6 +2,7 @@ package com.mnafis.foosballmatches
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.IdRes
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -11,6 +12,9 @@ import com.mnafis.foosballmatches.ranking.RankingFragment
 import com.mnafis.foosballmatches.settings.SettingsFragment
 
 class MainActivity : BaseActivity() {
+
+    @IdRes
+    private var currentTab: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         (applicationContext as FoosballApplication).appComponent.inject(this)
@@ -42,9 +46,12 @@ class MainActivity : BaseActivity() {
             }
 
             selectedTab?.let {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.activity_main_fragment_container, it)
-                    .commit()
+                if (item.itemId != currentTab) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.activity_main_fragment_container, it)
+                        .commit()
+                    currentTab = item.itemId
+                }
             }
             true
         }

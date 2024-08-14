@@ -9,5 +9,6 @@ interface PlayersRepository {
     fun addNewPlayers(players: List<Player>) : Completable //this should only be used to add sample data, not for production
     fun updatePlayer(player: Player) : Completable
     fun deletePlayer(player: Player) : Completable
+    fun deleteAllPlayers() : Completable
     fun getAllPlayers() : Single<List<Player>>
 }

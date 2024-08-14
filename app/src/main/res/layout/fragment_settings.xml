@@ -2,6 +2,54 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/page_margin_horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <TextView
+        android:id="@+id/fragment_settings_clear_data_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_settings_clear_data_header"
+        android:textSize="@dimen/edit_text_title_size"
+        android:padding="@dimen/space_dp_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/fragment_settings_clear_data_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_settings_clear_data_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_settings_clear_data_header" />
+
+    <Space
+        android:id="@+id/fragment_settings_spacer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_dp_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_settings_clear_data_button"/>
+
+    <TextView
+        android:id="@+id/fragment_settings_populate_data_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_settings_populate_data_header"
+        android:textSize="@dimen/edit_text_title_size"
+        android:padding="@dimen/space_dp_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_settings_spacer"/>
+
+    <Button
+        android:id="@+id/fragment_settings_populate_data_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_settings_populate_data_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_settings_populate_data_header" />
 </androidx.constraintlayout.widget.ConstraintLayout>
