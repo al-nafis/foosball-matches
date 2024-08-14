@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.mnafis.foosballmatches.R
 import com.mnafis.foosballmatches.models.Player
@@ -21,7 +20,7 @@ class MatchesDetailsPlayersDialogRecyclerAdapter @Inject constructor(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder =
         PlayerViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.match_details_dialog_player_select_view, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.recycler_text_view, parent, false)
         )
 
     override fun getItemCount(): Int = players.size
@@ -42,6 +41,6 @@ class MatchesDetailsPlayersDialogRecyclerAdapter @Inject constructor(
     }
 
     class PlayerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val text: TextView = itemView.findViewById(R.id.match_details_dialog_player_select_view_item)
+        val text: TextView = itemView.findViewById(R.id.recycler_text_view_item)
     }
 }

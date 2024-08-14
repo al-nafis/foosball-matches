@@ -25,4 +25,13 @@
     <string name="activity_match_details_error_message_generic">Something went wrong. Try again</string>
     <string name="activity_match_details_error_message_score_tied">Scores cannot be tied. There should be a winner</string>
     <string name="activity_match_details_error_message_same_player">Same players are selected as both player 1 and player 2</string>
+    <string name="fragment_ranking_header_rank">Rank</string>
+    <string name="fragment_ranking_header_name">Name</string>
+    <string name="fragment_ranking_header_total_played">Total Played</string>
+    <string name="fragment_ranking_header_wins">Wins</string>
+    <string name="fragment_ranking_header_losses">Losses</string>
+    <string name="ranking_sort_type_most_wins">Most Wins</string>
+    <string name="ranking_sort_type_most_losses">Most Losses</string>
+    <string name="ranking_sort_type_total_played">Total Played</string>
+    <string name="ranking_sort_type_dialog_header">Select a sort type</string>
 </resources>

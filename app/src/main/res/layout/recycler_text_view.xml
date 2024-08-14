@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/match_details_dialog_player_select_view_item"
+        android:id="@+id/recycler_text_view_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="123456 - John"
