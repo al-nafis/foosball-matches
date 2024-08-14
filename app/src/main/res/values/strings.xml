@@ -19,4 +19,10 @@
     <string name="activity_match_details_edit_time_hint">Select a time</string>
     <string name="activity_match_details_edit_player_hint">Select a player</string>
     <string name="activity_match_details_edit_player_score_hint">Type Score</string>
+    <string name="activity_match_details_error_message_date">Date missing</string>
+    <string name="activity_match_details_error_message_player">Player missing</string>
+    <string name="activity_match_details_error_message_score">Score missing</string>
+    <string name="activity_match_details_error_message_generic">Something went wrong. Try again</string>
+    <string name="activity_match_details_error_message_score_tied">Scores cannot be tied. There should be a winner</string>
+    <string name="activity_match_details_error_message_same_player">Same players are selected as both player 1 and player 2</string>
 </resources>

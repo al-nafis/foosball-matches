@@ -27,9 +27,11 @@ abstract class BaseActivity: AppCompatActivity() {
     }
 
     fun setToolbarTrailerIcon(toolbarTrailerIcon: ToolbarTrailerIcon, onClickListener: View.OnClickListener) {
+        resetToolbarTrailerIcon()
         val icon = when(toolbarTrailerIcon) {
             ToolbarTrailerIcon.ADD -> R.drawable.ic_button_add
             ToolbarTrailerIcon.SORT -> R.drawable.ic_button_sort
+            ToolbarTrailerIcon.DELETE -> R.drawable.ic_delete
         }
         val toolbarIcon: ImageView = findViewById(R.id.toolbar_end_logo)
         toolbarIcon.setImageResource(icon)
@@ -48,7 +50,7 @@ abstract class BaseActivity: AppCompatActivity() {
 }
 
 enum class ToolbarTrailerIcon {
-    ADD, SORT
+    ADD, SORT, DELETE
 }
 
 enum class ToolbarNavigationIcon {

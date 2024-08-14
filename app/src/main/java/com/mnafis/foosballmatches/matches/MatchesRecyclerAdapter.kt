@@ -31,7 +31,7 @@ class MatchesRecyclerAdapter @Inject constructor(
 
     override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
         val match = matches[position]
-        holder.date.text = getFormattedDate(match.dateInfo.year, match.dateInfo.month, match.dateInfo.day)
+        holder.date.text = getFormattedDate(match.dateInfo)
         holder.player1Name.text = players.find { it.employeeId == matches[position].player1Id }?.name
         holder.score.text = context.getString(R.string.match_card_view_score, match.player1Score, match.player2Score)
         holder.player2Name.text = players.find { it.employeeId == matches[position].player2Id }?.name

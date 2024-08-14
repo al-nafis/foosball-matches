@@ -46,7 +46,6 @@ class MatchesFragment : Fragment() {
 
         val activity = activity as MainActivity
         activity.setToolbarTitle(R.string.menu_title_matches)
-        activity.resetToolbarTrailerIcon()
         activity.setToolbarTrailerIcon(ToolbarTrailerIcon.ADD) {
             val intent = Intent(activity, MatchDetailsActivity::class.java)
             startActivity(intent)
