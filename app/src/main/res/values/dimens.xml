@@ -5,4 +5,8 @@
     <dimen name="page_margin_horizontal">12dp</dimen>
     <dimen name="card_view_padding">12dp</dimen>
     <dimen name="card_view_edit_button_size">25dp</dimen>
+    <dimen name="edit_text_title_size">16sp</dimen>
+    <dimen name="edit_text_edit_size">18sp</dimen>
+    <dimen name="space_dp_10">10dp</dimen>
+    <dimen name="space_dp_20">20dp</dimen>
 </resources>

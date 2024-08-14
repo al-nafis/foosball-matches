@@ -1,4 +1,4 @@
-package com.mnafis.foosballmatches.database.matches
+package com.mnafis.foosballmatches.matches
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,8 +10,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mnafis.foosballmatches.R
 import com.mnafis.foosballmatches.models.Match
-import com.mnafis.foosballmatches.tools.getDate
-import com.mnafis.foosballmatches.tools.getTime
+import com.mnafis.foosballmatches.models.Player
+import com.mnafis.foosballmatches.tools.getFormattedDate
 import javax.inject.Inject
 
 class MatchesRecyclerAdapter @Inject constructor(
@@ -19,6 +19,7 @@ class MatchesRecyclerAdapter @Inject constructor(
 ) : RecyclerView.Adapter<MatchesRecyclerAdapter.MatchViewHolder>() {
 
     private var matches = listOf<Match>()
+    private var players = listOf<Player>()
     private var onClickItem: (Match) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchViewHolder =
@@ -30,17 +31,17 @@ class MatchesRecyclerAdapter @Inject constructor(
 
     override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
         val match = matches[position]
-        holder.date.text = match.dateInfo.getDate()
-        holder.time.text = match.dateInfo.getTime()
-        holder.player1Name.text = match.player1Name
+        holder.date.text = getFormattedDate(match.dateInfo.year, match.dateInfo.month, match.dateInfo.day)
+        holder.player1Name.text = players.find { it.employeeId == matches[position].player1Id }?.name
         holder.score.text = context.getString(R.string.match_card_view_score, match.player1Score, match.player2Score)
-        holder.player2Name.text = match.player2Name
+        holder.player2Name.text = players.find { it.employeeId == matches[position].player2Id }?.name
         holder.editButton.setOnClickListener { onClickItem(match) }
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(data: List<Match>) {
-        matches = data
+    fun setData(matches: List<Match>, players: List<Player>) {
+        this.matches = matches
+        this.players = players
         notifyDataSetChanged()
     }
 
@@ -50,7 +51,6 @@ class MatchesRecyclerAdapter @Inject constructor(
 
     class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val date: TextView = itemView.findViewById(R.id.match_card_view_date)
-        val time: TextView = itemView.findViewById(R.id.match_card_view_time)
         val player1Name: TextView = itemView.findViewById(R.id.match_card_view_player1_name)
         val score: TextView = itemView.findViewById(R.id.match_card_view_score)
         val player2Name: TextView = itemView.findViewById(R.id.match_card_view_player2_name)

@@ -6,9 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,7 +14,6 @@ import com.mnafis.foosballmatches.FoosballApplication
 import com.mnafis.foosballmatches.MainActivity
 import com.mnafis.foosballmatches.R
 import com.mnafis.foosballmatches.ToolbarTrailerIcon
-import com.mnafis.foosballmatches.database.matches.MatchesRecyclerAdapter
 import com.mnafis.foosballmatches.matches.details.MatchDetailsActivity
 import javax.inject.Inject
 
@@ -45,8 +41,8 @@ class MatchesFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_matches, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onResume() {
+        super.onResume()
 
         val activity = activity as MainActivity
         activity.setToolbarTitle(R.string.menu_title_matches)
@@ -57,19 +53,20 @@ class MatchesFragment : Fragment() {
         }
 
         setupMatchList()
+        viewModel.fetchData()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        viewModel.disposeSubscriptions()
+        viewModel.disposeDisposables()
     }
 
     private fun setupMatchList() {
         val recyclerView = activity?.findViewById<RecyclerView>(R.id.fragment_matches_recycler_view)
         recyclerView?.layoutManager = LinearLayoutManager(activity)
         recyclerView?.adapter = matchesRecyclerAdapter
-        viewModel.matches.observe(viewLifecycleOwner) { matches ->
-            matchesRecyclerAdapter.setData(matches)
+        viewModel.matchesAndPlayers.observe(viewLifecycleOwner) { pair ->
+            matchesRecyclerAdapter.setData(pair.first, pair.second)
         }
         matchesRecyclerAdapter.setOnClickListener {
             val bundle = Bundle().apply {

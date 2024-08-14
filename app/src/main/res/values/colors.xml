@@ -4,5 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="off_white">#EFEFEF</color>
     <color name="theme">#0074d9</color>
-    <color name="menu_icon_unchecked">@color/black</color>
+    <color name="edit_box_underline">#2E2E2E</color>
+    <color name="error">#9F0000</color>
 </resources>

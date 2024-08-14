@@ -10,5 +10,5 @@ data class Player(
     val name: String,
     val totalMatchesPlayed: Int = 0,
     val wins: Int = 0,
-    val loses: Int = 0
+    val losses: Int = 0
 ) : Serializable

@@ -1,17 +1,14 @@
 package com.mnafis.foosballmatches.tools
 
-import com.mnafis.foosballmatches.models.DateInfo
+import android.annotation.SuppressLint
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
 
-fun DateInfo.getDate(): String {
-    return "$month/$day/$year"
-}
 
-fun DateInfo.getTime(): String {
-    var meridiem = "AM"
-    var formattedHour = hour
-    if (hour > 12) {
-        formattedHour = hour - 12
-        meridiem = "PM"
-    }
-    return "$formattedHour:$minute $meridiem"
+@SuppressLint("SimpleDateFormat")
+fun getFormattedDate(year: Int, month: Int, day: Int): String {
+    val c: Calendar = Calendar.getInstance()
+    c.set(year, month, day)
+    return SimpleDateFormat("MM/dd/y").format(Date(c.timeInMillis))
 }
