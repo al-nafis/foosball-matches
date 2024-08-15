@@ -21,10 +21,10 @@ This app demonstrates the skill set that includes Kotlin, Android Jetpack, RxJav
 
 ## Room for Improvements
   - Moving common codes into Base classes for Activities and Fragments
-  - For ranking screen: daily, weekly, and monthly ranking
+  - For ranking screen: daily, weekly, and monthly ranking view
   - Inline Error messagees
   - Confirmation prompts during data deletion
-  - A general message when a screen has not list items
+  - A general message when a screen has no list items
 
 ## Screenshots
 
