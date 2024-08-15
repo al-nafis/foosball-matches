@@ -3,6 +3,28 @@
 
 This app demonstrates the skilset that includes Android Jetpack, RxJava2, MVVM, Dagger, Room etc.
 
+## Notes
+  - Add New Match:
+      - Assuming that a tie score is not allowed, thus user cannot enter a tied score
+  - Match Edit:
+      - reselecting the players is not allowed
+      - deleting a match also updates the associated wins, losses and total played values of the players
+  - Ranking:
+      - Sorting by wins, losses and most played matches
+  - Add New Player:
+      - Duplicated ID is not allowed
+  - Edit Player:
+      - editing employee id is not allowed
+      - deleting a player also deletes the mathces the player participated, but it does not affect any other players' stats
+  - Settings:
+      - Developer Settings to generate sample data or clear the database
+
+## Room for Improvements
+  - Moving common codes in a Base classes for Activities and Fragments
+  - For ranking screen: daily, weekly, and monthly ranking
+  - Inline Error messagees
+  - confirmation prompts during data deletion
+
 ## Screenshots
 
 ### Matches Screen
