@@ -1,11 +1,11 @@
 # Foosball Matches App
 <img src="https://github.com/user-attachments/assets/d97e68c6-c8fb-40d8-8efb-e9d7e94b96ac" width="200" />
 
-This app demonstrates the skilset that includes Android Jetpack, RxJava2, MVVM, Dagger, Room etc.
+This app demonstrates the skill set that includes Kotlin, Android Jetpack, RxJava2, MVVM, Dagger, Room etc.
 
 ## Notes
   - Add New Match:
-      - Assuming that a tie score is not allowed, thus user cannot enter a tied score
+      - A tied score is not allowed, thus user cannot submit with a tied score
   - Match Edit:
       - reselecting the players is not allowed
       - deleting a match also updates the associated wins, losses and total played values of the players
