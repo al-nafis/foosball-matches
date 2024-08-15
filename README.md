@@ -1,4 +1,5 @@
 # Foosball Matches App
+<img src="https://github.com/user-attachments/assets/d97e68c6-c8fb-40d8-8efb-e9d7e94b96ac" width="200" />
 
 This app demonstrates the skilset that includes Android Jetpack, RxJava2, MVVM, Dagger, Room etc.
 
