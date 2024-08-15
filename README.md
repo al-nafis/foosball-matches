@@ -7,15 +7,15 @@ This app demonstrates the skill set that includes Kotlin, Android Jetpack, RxJav
   - Add New Match:
       - A tied score is not allowed, thus user cannot submit with a tied score
   - Match Edit:
-      - reselecting the players is not allowed
-      - deleting a match also updates the associated wins, losses and total played values of the players
+      - Reselecting the players is not allowed
+      - Deleting a match also updates the associated wins, losses and total played values of the players
   - Ranking:
       - Sorting by wins, losses and most played matches
   - Add New Player:
       - Duplicated ID is not allowed
   - Edit Player:
-      - editing employee id is not allowed
-      - deleting a player also deletes the mathces the player participated, but it does not affect any other players' stats
+      - Editing employee id is not allowed
+      - Deleting a player also deletes the mathces the player participated, but it does not affect any other players' stats
   - Settings:
       - Developer Settings to generate sample data or clear the database
 
@@ -23,8 +23,8 @@ This app demonstrates the skill set that includes Kotlin, Android Jetpack, RxJav
   - Moving common codes in a Base classes for Activities and Fragments
   - For ranking screen: daily, weekly, and monthly ranking
   - Inline Error messagees
-  - confirmation prompts during data deletion
-  - a general message when a screen has not list items
+  - Confirmation prompts during data deletion
+  - A general message when a screen has not list items
 
 ## Screenshots
 
