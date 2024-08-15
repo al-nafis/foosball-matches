@@ -7,7 +7,7 @@ import io.reactivex.Single
 
 interface MatchesRepository {
     fun addNewMatch(match: Match) : Completable
-    fun addNewMatches(players: List<Match>) : Completable //this should only be used to add sample data, not for production
+    fun addNewMatches(matches: List<Match>) : Completable //this should only be used to add sample data, not for production
     fun updateMatch(match: Match) : Completable
     fun deleteMatch(match: Match) : Completable
     fun deleteAllMatches() : Completable

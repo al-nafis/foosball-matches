@@ -24,7 +24,4 @@ interface MatchesDAO {
 
     @Query("SELECT * FROM `Match`")
     fun getAllMatches(): List<Match>
-
-    @Query("SELECT * FROM `Match` WHERE id = :timestamp ORDER BY id DESC")
-    fun getMatchesById(timestamp: Long): List<Match>
 }
