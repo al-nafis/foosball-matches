@@ -20,7 +20,7 @@ This app demonstrates the skill set that includes Kotlin, Android Jetpack, RxJav
       - Developer Settings to generate sample data or clear the database
 
 ## Room for Improvements
-  - Moving common codes in a Base classes for Activities and Fragments
+  - Moving common codes into Base classes for Activities and Fragments
   - For ranking screen: daily, weekly, and monthly ranking
   - Inline Error messagees
   - Confirmation prompts during data deletion
