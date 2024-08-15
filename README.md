@@ -24,6 +24,7 @@ This app demonstrates the skilset that includes Android Jetpack, RxJava2, MVVM, 
   - For ranking screen: daily, weekly, and monthly ranking
   - Inline Error messagees
   - confirmation prompts during data deletion
+  - a general message when a screen has not list items
 
 ## Screenshots
 
