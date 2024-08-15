@@ -97,5 +97,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragment_ranking_header_layout"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout="@layout/ranking_recycler_item_view"/>
+        tools:layout="@layout/fragment_ranking_recycler_item_view"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

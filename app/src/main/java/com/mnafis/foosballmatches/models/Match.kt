@@ -13,7 +13,7 @@ data class Match(
     val player1Score: Int,
     val player2Id: Int,
     val player2Score: Int,
-    val winner: String
+    val winnerId: Int
 ) : Serializable
 
 @Entity

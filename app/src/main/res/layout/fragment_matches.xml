@@ -13,6 +13,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout="@layout/match_card_view"/>
+        tools:layout="@layout/fragment_matches_card_view"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/player_details"
+    android:paddingVertical="@dimen/page_margin_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/activity_match_details_toolbar"
+        layout="@layout/toolbar_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/match_details_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_match_details_toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/match_details_edit_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/page_margin_horizontal">
+
+            <!-- Employee Id -->
+            <TextView
+                android:id="@+id/activity_player_details_id_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_player_details_edit_id_header"
+                android:textSize="@dimen/edit_text_title_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Space
+                android:id="@+id/activity_player_details_id_header_spacer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_dp_10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_player_details_id_header" />
+
+            <EditText
+                android:id="@+id/activity_player_details_edit_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="@string/activity_player_details_edit_id_hint"
+                android:inputType="number"
+                android:maxLength="6"
+                android:textSize="@dimen/edit_text_edit_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_player_details_id_header_spacer" />
+
+            <View
+                android:id="@+id/activity_player_details_id_value_underline"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/edit_box_underline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_player_details_edit_id" />
+
+            <Space
+                android:id="@+id/activity_player_details_id_spacer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_dp_20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_player_details_id_value_underline" />
+
+            <!-- Name -->
+            <TextView
+                android:id="@+id/activity_player_details_name_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_player_details_edit_name_header"
+                android:textSize="@dimen/edit_text_title_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_player_details_id_spacer" />
+
+            <Space
+                android:id="@+id/activity_player_details_name_header_spacer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_dp_10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_player_details_name_header" />
+
+            <EditText
+                android:id="@+id/activity_player_details_edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:singleLine="true"
+                android:hint="@string/activity_player_details_edit_name_hint"
+                android:textSize="@dimen/edit_text_edit_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_player_details_name_header_spacer" />
+
+            <View
+                android:id="@+id/activity_player_details_name_value_underline"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/edit_box_underline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_player_details_edit_name" />
+
+            <Space
+                android:id="@+id/activity_player_details_name_spacer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_dp_20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_player_details_name_value_underline" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <TextView
+        android:id="@+id/player_details_error_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Error"
+        android:textColor="@color/error"
+        android:layout_marginHorizontal="@dimen/page_margin_horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/player_details_button_submit" />
+
+    <Button
+        android:id="@+id/player_details_button_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_submit"
+        android:paddingVertical="@dimen/page_margin_horizontal"
+        android:layout_marginHorizontal="@dimen/page_margin_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

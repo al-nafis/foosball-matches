@@ -18,7 +18,7 @@ class RankingRecyclerAdapter @Inject constructor() :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RankingItemViewHolder =
         RankingItemViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.ranking_recycler_item_view, parent, false)
+                .inflate(R.layout.fragment_ranking_recycler_item_view, parent, false)
         )
 
     override fun getItemCount(): Int = players.size

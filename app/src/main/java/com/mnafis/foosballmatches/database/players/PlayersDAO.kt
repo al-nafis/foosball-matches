@@ -22,7 +22,7 @@ interface PlayersDAO {
     @Query("DELETE FROM Player")
     fun deleteAllPlayers()
 
-    @Query("SELECT * FROM Player")
+    @Query("SELECT * FROM Player ORDER BY employeeId")
     fun getAllPlayers(): List<Player>
 
     @Query("SELECT * FROM Player WHERE employeeId = :employeeId")

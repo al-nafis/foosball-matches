@@ -24,7 +24,7 @@ class MatchesRecyclerAdapter @Inject constructor(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchViewHolder =
         MatchViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.match_card_view, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.fragment_matches_card_view, parent, false)
         )
 
     override fun getItemCount(): Int = matches.size

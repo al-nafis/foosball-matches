@@ -8,6 +8,7 @@ import com.mnafis.foosballmatches.database.players.PlayersRepository
 import com.mnafis.foosballmatches.models.Match
 import com.mnafis.foosballmatches.models.Player
 import io.reactivex.Single
+import java.time.LocalDate
 
 class MatchesViewModel(
     private val matchesRepository: MatchesRepository,
@@ -21,8 +22,16 @@ class MatchesViewModel(
         this addDisposable Single.zip(
             matchesRepository.getAllMatches(),
             playersRepository.getAllPlayers()
-        ) { matches, players -> Pair(matches, players) }
-            .subscribe(
+        ) { matches, players ->
+            val sortedMatches = matches
+                .sortedWith(
+                    compareByDescending<Match> {
+                        LocalDate.of(it.dateInfo.year, it.dateInfo.month + 1, it.dateInfo.day)
+                    }
+                        .thenByDescending { it.id }
+                )
+            Pair(sortedMatches, players)
+        }.subscribe(
                 { pair -> _matchesAndPlayers.postValue(pair) },
                 { error -> error.printStackTrace() }
             )

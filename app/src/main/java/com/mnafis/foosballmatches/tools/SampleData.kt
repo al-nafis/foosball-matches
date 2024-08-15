@@ -5,10 +5,10 @@ import com.mnafis.foosballmatches.models.Match
 import com.mnafis.foosballmatches.models.Player
 
 val samplePlayers = listOf(
-    Player(employeeId = 1, name = "Amos", totalMatchesPlayed = 12, wins = 6, losses = 6),
-    Player(employeeId = 2, name = "Diego", totalMatchesPlayed = 8, wins = 5, losses = 3),
-    Player(employeeId = 3, name = "Joel", totalMatchesPlayed = 3, wins = 1, losses = 2),
-    Player(employeeId = 4, name = "Tim", totalMatchesPlayed = 5, wins = 2, losses = 3)
+    Player(employeeId = 458925, name = "Amos", totalMatchesPlayed = 12, wins = 6, losses = 6),
+    Player(employeeId = 141411, name = "Diego", totalMatchesPlayed = 8, wins = 5, losses = 3),
+    Player(employeeId = 981664, name = "Joel", totalMatchesPlayed = 3, wins = 1, losses = 2),
+    Player(employeeId = 629782, name = "Tim", totalMatchesPlayed = 5, wins = 2, losses = 3)
 )
 
 val sampleMatches = listOf(
@@ -19,7 +19,7 @@ val sampleMatches = listOf(
         player1Score = 4,
         player2Id = samplePlayers[1].employeeId,
         player2Score = 5,
-        winner = samplePlayers[1].name
+        winnerId = samplePlayers[1].employeeId
     ),
     Match(
         id = 2,
@@ -28,16 +28,7 @@ val sampleMatches = listOf(
         player1Score = 1,
         player2Id = samplePlayers[1].employeeId,
         player2Score = 5,
-        winner = samplePlayers[1].name
-    ),
-    Match(
-        id = 3,
-        dateInfo = DateInfo(3,0, 2024),
-        player1Id = samplePlayers[0].employeeId,
-        player1Score = 2,
-        player2Id = samplePlayers[1].employeeId,
-        player2Score = 5,
-        winner = samplePlayers[1].name
+        winnerId = samplePlayers[1].employeeId
     ),
     Match(
         id = 4,
@@ -46,16 +37,7 @@ val sampleMatches = listOf(
         player1Score = 0,
         player2Id = samplePlayers[1].employeeId,
         player2Score = 5,
-        winner = samplePlayers[1].name
-    ),
-    Match(
-        id = 5,
-        dateInfo = DateInfo(5,0, 2024),
-        player1Id = samplePlayers[0].employeeId,
-        player1Score = 6,
-        player2Id = samplePlayers[1].employeeId,
-        player2Score = 5,
-        winner = samplePlayers[0].name
+        winnerId = samplePlayers[1].employeeId
     ),
     Match(
         id = 6,
@@ -64,43 +46,61 @@ val sampleMatches = listOf(
         player1Score = 5,
         player2Id = samplePlayers[1].employeeId,
         player2Score = 2,
-        winner = samplePlayers[0].name
+        winnerId = samplePlayers[0].employeeId
     ),
     Match(
-        id = 7,
+        id = 142,
+        dateInfo = DateInfo(5,0, 2024),
+        player1Id = samplePlayers[0].employeeId,
+        player1Score = 6,
+        player2Id = samplePlayers[1].employeeId,
+        player2Score = 5,
+        winnerId = samplePlayers[0].employeeId
+    ),
+    Match(
+        id = 3,
+        dateInfo = DateInfo(3,0, 2024),
+        player1Id = samplePlayers[0].employeeId,
+        player1Score = 2,
+        player2Id = samplePlayers[1].employeeId,
+        player2Score = 5,
+        winnerId = samplePlayers[1].employeeId
+    ),
+    Match(
+        id = 11,
         dateInfo = DateInfo(7,0, 2024),
         player1Id = samplePlayers[0].employeeId,
         player1Score = 4,
         player2Id = samplePlayers[1].employeeId,
         player2Score = 0,
-        winner = samplePlayers[0].name
+        winnerId = samplePlayers[0].employeeId
     ),
     Match(
-        id = 8,
+        id = 84,
         dateInfo = DateInfo(8,0, 2024),
         player1Id = samplePlayers[2].employeeId,
         player1Score = 4,
         player2Id = samplePlayers[1].employeeId,
         player2Score = 5,
-        winner = samplePlayers[1].name
+        winnerId = samplePlayers[1].employeeId
     ),
     Match(
-        id = 9,
+        id = 59,
         dateInfo = DateInfo(9,0, 2024),
         player1Id = samplePlayers[3].employeeId,
         player1Score = 4,
         player2Id = samplePlayers[0].employeeId,
         player2Score = 5,
-        winner = samplePlayers[0].name
+        winnerId = samplePlayers[0].employeeId
     ),
     Match(
-        id = 10,
+        id = 1210,
         dateInfo = DateInfo(10,0, 2024),
         player1Id = samplePlayers[3].employeeId,
         player1Score = 5,
         player2Id = samplePlayers[0].employeeId,
         player2Score = 2,
-        winner = samplePlayers[3].name
+        winnerId = samplePlayers[3].employeeId
     ),
     Match(
         id = 11,
@@ -109,7 +109,7 @@ val sampleMatches = listOf(
         player1Score = 3,
         player2Id = samplePlayers[3].employeeId,
         player2Score = 5,
-        winner = samplePlayers[3].name
+        winnerId = samplePlayers[3].employeeId
     ),
     Match(
         id = 12,
@@ -118,7 +118,7 @@ val sampleMatches = listOf(
         player1Score = 5,
         player2Id = samplePlayers[3].employeeId,
         player2Score = 3,
-        winner = samplePlayers[0].name
+        winnerId = samplePlayers[0].employeeId
     ),
     Match(
         id = 13,
@@ -127,7 +127,7 @@ val sampleMatches = listOf(
         player1Score = 5,
         player2Id = samplePlayers[2].employeeId,
         player2Score = 4,
-        winner = samplePlayers[0].name
+        winnerId = samplePlayers[0].employeeId
     ),
     Match(
         id = 14,
@@ -136,6 +136,6 @@ val sampleMatches = listOf(
         player1Score = 5,
         player2Id = samplePlayers[3].employeeId,
         player2Score = 2,
-        winner = samplePlayers[2].name
+        winnerId = samplePlayers[2].employeeId
     )
 )

@@ -53,6 +53,12 @@ class RankingFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
+        setupToolbar()
+        setupPlayerList()
+        viewModel.fetchData()
+    }
+
+    private fun setupToolbar() {
         val activity = activity as MainActivity
         activity.setToolbarTitle(R.string.menu_title_ranking)
         activity.setToolbarTrailerIcon(ToolbarTrailerIcon.SORT) {
@@ -76,9 +82,6 @@ class RankingFragment : Fragment() {
 
             dialog.show()
         }
-
-        setupPlayerList()
-        viewModel.fetchData()
     }
 
     private fun setupPlayerList() {

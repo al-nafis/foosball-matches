@@ -22,7 +22,7 @@ interface MatchesDAO {
     @Query("DELETE FROM `Match`")
     fun deleteAllMatches()
 
-    @Query("SELECT * FROM `Match` ORDER BY id DESC")
+    @Query("SELECT * FROM `Match`")
     fun getAllMatches(): List<Match>
 
     @Query("SELECT * FROM `Match` WHERE id = :timestamp ORDER BY id DESC")

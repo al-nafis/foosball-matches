@@ -44,13 +44,7 @@ class MatchesFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        val activity = activity as MainActivity
-        activity.setToolbarTitle(R.string.menu_title_matches)
-        activity.setToolbarTrailerIcon(ToolbarTrailerIcon.ADD) {
-            val intent = Intent(activity, MatchDetailsActivity::class.java)
-            startActivity(intent)
-        }
-
+        setupToolbar()
         setupMatchList()
         viewModel.fetchData()
     }
@@ -58,6 +52,15 @@ class MatchesFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         viewModel.disposeDisposables()
+    }
+
+    private fun setupToolbar() {
+        val activity = activity as MainActivity
+        activity.setToolbarTitle(R.string.menu_title_matches)
+        activity.setToolbarTrailerIcon(ToolbarTrailerIcon.ADD) {
+            val intent = Intent(activity, MatchDetailsActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setupMatchList() {

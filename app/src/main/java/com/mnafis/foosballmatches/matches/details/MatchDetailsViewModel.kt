@@ -62,10 +62,10 @@ class MatchDetailsViewModel(
                                 player1Score = player1Score.value!!,
                                 player2Id = player2.value!!.employeeId,
                                 player2Score = player2Score.value!!,
-                                winner = winner.name
+                                winnerId = winner.employeeId
                             )
                         ).andThen(
-                            if (editableMatch!!.winner != winner.name) {
+                            if (editableMatch!!.winnerId != winner.employeeId) {
                                 println("ABID: Current Stat: ${winner.name} - ${winner.totalMatchesPlayed} - ${if (winner.wins > 0) winner.wins - 1 else 0} - ${winner.losses + 1}")
                                 playersRepository.updatePlayer(
                                     winner.copy(
@@ -75,7 +75,7 @@ class MatchDetailsViewModel(
                                 )
                             } else Completable.complete()
                         ).andThen(
-                            if (editableMatch!!.winner != winner.name) {
+                            if (editableMatch!!.winnerId != winner.employeeId) {
                                 println("ABID: Current Stat: ${loser.name} - ${loser.totalMatchesPlayed} - ${loser.wins + 1} - ${if (loser.losses > 0) loser.losses - 1 else 0}")
                                 playersRepository.updatePlayer(
                                     loser.copy(
@@ -97,7 +97,7 @@ class MatchDetailsViewModel(
                                 player1Score = player1Score.value!!,
                                 player2Id = player2.value!!.employeeId,
                                 player2Score = player2Score.value!!,
-                                winner = winner.name
+                                winnerId = winner.employeeId
                             )
                         ).andThen(
                             playersRepository.updatePlayer(
