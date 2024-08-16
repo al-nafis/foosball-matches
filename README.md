@@ -4,6 +4,12 @@
 This app demonstrates the skill set that includes Kotlin, Android Jetpack, RxJava2, MVVM, Dagger, Room etc.
 
 ## Notes
+  - On RxJava2 subscriptions, I used ```Schedulers.single()``` on ```observerOn()``` instead of ```AndroidSchedulers.mainThread()``` since there were difficulties adding the dependency(RxAndroid2).
+  - Even though, it was not mandatory, Room Persistent Library was utilized to store data as it seemed easier and more sensible
+
+## Screen Definition and Design Justification
+  - Matches
+      - Lists the matches 
   - Add New Match:
       - A tied score is not allowed, thus user cannot submit with a tied score
   - Match Edit:
@@ -11,6 +17,8 @@ This app demonstrates the skill set that includes Kotlin, Android Jetpack, RxJav
       - Deleting a match also updates the associated wins, losses and total played values of the players
   - Ranking:
       - Sorting by wins, losses and most played matches
+  - Players
+      - List the players
   - Add New Player:
       - Duplicated ID is not allowed
   - Edit Player:
