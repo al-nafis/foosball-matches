@@ -66,21 +66,19 @@ class MatchDetailsViewModel(
                             )
                         ).andThen(
                             if (editableMatch!!.winnerId != winner.employeeId) {
-                                println("ABID: Current Stat: ${winner.name} - ${winner.totalMatchesPlayed} - ${if (winner.wins > 0) winner.wins - 1 else 0} - ${winner.losses + 1}")
                                 playersRepository.updatePlayer(
                                     winner.copy(
-                                        wins = if (winner.wins > 0) winner.wins - 1 else 0,
-                                        losses = winner.losses + 1
+                                        wins = winner.wins + 1,
+                                        losses = if (winner.losses > 0) winner.losses - 1 else 0
                                     )
                                 )
                             } else Completable.complete()
                         ).andThen(
                             if (editableMatch!!.winnerId != winner.employeeId) {
-                                println("ABID: Current Stat: ${loser.name} - ${loser.totalMatchesPlayed} - ${loser.wins + 1} - ${if (loser.losses > 0) loser.losses - 1 else 0}")
                                 playersRepository.updatePlayer(
                                     loser.copy(
-                                        wins = loser.wins + 1,
-                                        losses = if (loser.losses > 0) loser.losses - 1 else 0
+                                        wins = if (loser.wins > 0) loser.wins - 1 else 0,
+                                        losses = loser.losses + 1
                                     )
                                 )
                             } else Completable.complete()

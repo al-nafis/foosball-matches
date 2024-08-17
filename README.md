@@ -6,6 +6,7 @@ This app demonstrates the skill set that includes Kotlin, Android Jetpack, RxJav
 ## Notes
   - On RxJava2 subscriptions, I used ```Schedulers.single()``` on ```observerOn()``` instead of ```AndroidSchedulers.mainThread()``` since there were difficulties adding the dependency(RxAndroid2).
   - Even though, it was not mandatory, Room Persistent Library was utilized to store data as it seemed easier and more sensible
+  - This interfaces ```PlayersRepository``` and ```MatchesRepository``` are the blueprints of the repository implementation. Using them, we can come up with different solutions to data storage. For now, Room is being used to store data locally with one of the implementation(```PlayersDatabaseManager``` and ```MatchesDatabaseManager```). For future, we can utilize this interface to create an API integration to store data remotely
 
 ## Screen Definition and Design Justification
   - Matches

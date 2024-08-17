@@ -49,7 +49,7 @@ class PlayerDetailsViewModel(
         if (validate()) {
             this addDisposable if (isEdit) {
                 playersRepository.updatePlayer(
-                    editablePlayer!!.copy(name = _name.value!!)
+                    editablePlayer!!.copy(name = _name.value!!.lowercase().replaceFirstChar { it.uppercase() })
                 ).subscribe(
                     { _onSuccessSubmit.postValue(true) },
                     { _errorMessage.postValue(ErrorType.GENERIC) }
@@ -58,7 +58,7 @@ class PlayerDetailsViewModel(
                 playersRepository.addNewPlayer(
                     Player(
                         employeeId = _employeeId.value!!,
-                        name = _name.value!!
+                        name = _name.value!!.lowercase().replaceFirstChar { it.uppercase() }
                     )
                 ).subscribe(
                     { _onSuccessSubmit.postValue(true) },
