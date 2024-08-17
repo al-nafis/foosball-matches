@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,9 +15,7 @@ import com.mnafis.foosballmatches.FoosballApplication
 import com.mnafis.foosballmatches.MainActivity
 import com.mnafis.foosballmatches.R
 import com.mnafis.foosballmatches.ToolbarTrailerIcon
-import com.mnafis.foosballmatches.matches.details.MatchDetailsActivity
 import com.mnafis.foosballmatches.players.details.PlayerDetailsActivity
-import com.mnafis.foosballmatches.ranking.RankingViewModel
 import javax.inject.Inject
 
 class PlayersFragment : Fragment() {
@@ -59,11 +58,21 @@ class PlayersFragment : Fragment() {
 
     private fun setupPlayersList() {
         val recyclerView = activity?.findViewById<RecyclerView>(R.id.fragment_players_recycler_view)
+        val emptyListMessageTextView = activity?.findViewById<TextView>(R.id.fragment_players_list_empty_message)
         recyclerView?.layoutManager = LinearLayoutManager(activity)
         recyclerView?.adapter = playersRecyclerAdapter
+
         viewModel.players.observe(viewLifecycleOwner) { players ->
+            if (players.isEmpty()) {
+                emptyListMessageTextView?.visibility = View.VISIBLE
+                recyclerView?.visibility = View.GONE
+            } else {
+                emptyListMessageTextView?.visibility = View.GONE
+                recyclerView?.visibility = View.VISIBLE
+            }
             playersRecyclerAdapter.setData(players)
         }
+
         playersRecyclerAdapter.setOnClickListener {
             val bundle = Bundle().apply {
                 putSerializable(PlayerDetailsActivity.PLAYER_DETAILS_EDIT, it)

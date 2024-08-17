@@ -46,4 +46,7 @@
     <string name="activity_player_details_error_message_id">Employee id missing</string>
     <string name="activity_player_details_error_message_name">Name missing</string>
     <string name="activity_player_details_error_message_duplicate_id">Duplicate Employee Id</string>
+    <string name="fragment_matches_list_empty_message">There are no matches added. Try adding one</string>
+    <string name="players_list_empty_message">There are no player added. Try adding one</string>
+    <string name="players_list_empty_message_title">No Players</string>
 </resources>

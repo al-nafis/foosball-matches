@@ -64,6 +64,11 @@ class PlayerDetailsActivity : BaseActivity() {
         setupObservers()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.disposeDisposables()
+    }
+
     private fun setupListeners() {
         val submitButton: Button = findViewById(R.id.player_details_button_submit)
         submitButton.setOnClickListener {

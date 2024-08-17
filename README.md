@@ -28,16 +28,14 @@ This app demonstrates the skill set that includes Kotlin, Android Jetpack, RxJav
       - Developer Settings to generate sample data or clear the database
 
 ## Room for Improvements
-  - Moving common codes into Base classes for Activities and Fragments
   - For ranking screen: daily, weekly, and monthly ranking view
   - Inline Error messages
   - Confirmation prompts during data deletion
-  - A general message when a screen has no list items
 
 ## Screenshots
 
 ### Matches Screen
-<img src="https://github.com/user-attachments/assets/e905f65c-305b-4f03-a890-1df3d0bf78c0" width="300" />
+<img src="https://github.com/user-attachments/assets/cd868edc-1d6d-478c-b5be-df30d7f44abe" width="300" />
 
 ### Add New Match
 <img src="https://github.com/user-attachments/assets/9192416e-d591-415d-8cc2-8a78a2205b87" width="300" />
@@ -49,7 +47,7 @@ This app demonstrates the skill set that includes Kotlin, Android Jetpack, RxJav
 <img src="https://github.com/user-attachments/assets/779947f9-99de-4c94-95dc-a6797da84c17" width="300" />
 
 ### Ranking Sorting Type
-<img src="https://github.com/user-attachments/assets/2813bd32-d807-4f9d-ab59-0305d9499659" width="300" />
+<img src="https://github.com/user-attachments/assets/ea0e110d-db1f-45e1-a6bd-1d5254a67474" width="300" />
 
 ### Players
 <img src="https://github.com/user-attachments/assets/4687d911-e71b-4467-ac13-2033dd9cee42" width="300" />

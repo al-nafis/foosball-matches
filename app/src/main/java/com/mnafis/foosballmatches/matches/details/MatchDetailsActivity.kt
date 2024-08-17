@@ -22,6 +22,7 @@ import com.mnafis.foosballmatches.ToolbarTrailerIcon
 import com.mnafis.foosballmatches.matches.details.MatchDetailsViewModel.ErrorType
 import com.mnafis.foosballmatches.models.DateInfo
 import com.mnafis.foosballmatches.models.Match
+import com.mnafis.foosballmatches.models.Player
 import com.mnafis.foosballmatches.tools.getFormattedDate
 import java.util.Calendar
 import javax.inject.Inject
@@ -84,6 +85,11 @@ class MatchDetailsActivity : BaseActivity() {
         setupObservers()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.disposeDisposables()
+    }
+
     private fun setupListeners() {
         val submitButton: Button = findViewById(R.id.match_details_button_submit)
 
@@ -105,52 +111,12 @@ class MatchDetailsActivity : BaseActivity() {
             }
         }
 
-        player1Info.setOnClickListener {
-            if (!viewModel.isEdit) {
-                val dialogView = LayoutInflater.from(this)
-                    .inflate(R.layout.recycler_text_dialog_layout, null)
-
-                val dialog = AlertDialog.Builder(this)
-                    .setView(dialogView)
-                    .create()
-
-                val recyclerViewHeader = dialogView.findViewById<TextView>(R.id.recycler_dialog_title)
-                recyclerViewHeader.text = getString(R.string.activity_match_details_edit_player_hint)
-                val recyclerView =
-                    dialogView.findViewById<RecyclerView>(R.id.recycler_dialog_recycler_view)
-                recyclerView.layoutManager = LinearLayoutManager(this)
-                recyclerView.adapter = playerItemAdapter
-                playerItemAdapter.setOnClickListener { selectedPlayer ->
-                    viewModel.setPlayer1(selectedPlayer)
-                    dialog.dismiss()
-                }
-
-                dialog.show()
-            }
+        player1Info.setPlayerInfoOnClickListener {
+            viewModel.setPlayer1(it)
         }
 
-        player2Info.setOnClickListener {
-            if (!viewModel.isEdit) {
-                val dialogView = LayoutInflater.from(this)
-                    .inflate(R.layout.recycler_text_dialog_layout, null)
-
-                val dialog = AlertDialog.Builder(this)
-                    .setView(dialogView)
-                    .create()
-
-                val recyclerViewHeader = dialogView.findViewById<TextView>(R.id.recycler_dialog_title)
-                recyclerViewHeader.text = getString(R.string.activity_match_details_edit_player_hint)
-                val recyclerView =
-                    dialogView.findViewById<RecyclerView>(R.id.recycler_dialog_recycler_view)
-                recyclerView.layoutManager = LinearLayoutManager(this)
-                recyclerView.adapter = playerItemAdapter
-                playerItemAdapter.setOnClickListener { selectedPlayer ->
-                    viewModel.setPlayer2(selectedPlayer)
-                    dialog.dismiss()
-                }
-
-                dialog.show()
-            }
+        player2Info.setPlayerInfoOnClickListener {
+            viewModel.setPlayer2(it)
         }
 
         submitButton.setOnClickListener {
@@ -232,6 +198,32 @@ class MatchDetailsActivity : BaseActivity() {
         viewModel.onSuccessSubmit.observe(this) {
             if (it) {
                 finish()
+            }
+        }
+    }
+
+    private fun TextView.setPlayerInfoOnClickListener(onSelectedPlayer: (Player) -> Unit) {
+        setOnClickListener {
+            if (!viewModel.isEdit) {
+                val dialogView = LayoutInflater.from(this@MatchDetailsActivity)
+                    .inflate(R.layout.recycler_text_dialog_layout, null)
+
+                val dialog = AlertDialog.Builder(this@MatchDetailsActivity)
+                    .setView(dialogView)
+                    .create()
+
+                val recyclerViewHeader = dialogView.findViewById<TextView>(R.id.recycler_dialog_title)
+                recyclerViewHeader.text = getString(R.string.activity_match_details_edit_player_hint)
+                val recyclerView =
+                    dialogView.findViewById<RecyclerView>(R.id.recycler_dialog_recycler_view)
+                recyclerView.layoutManager = LinearLayoutManager(this@MatchDetailsActivity)
+                recyclerView.adapter = playerItemAdapter
+                playerItemAdapter.setOnClickListener { selectedPlayer ->
+                    onSelectedPlayer(selectedPlayer)
+                    dialog.dismiss()
+                }
+
+                dialog.show()
             }
         }
     }

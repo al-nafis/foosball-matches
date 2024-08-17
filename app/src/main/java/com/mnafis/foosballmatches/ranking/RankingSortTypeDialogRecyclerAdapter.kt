@@ -1,11 +1,11 @@
 package com.mnafis.foosballmatches.ranking
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.mnafis.foosballmatches.R
 import com.mnafis.foosballmatches.ranking.RankingViewModel.SortType
@@ -33,7 +33,7 @@ class RankingSortTypeDialogRecyclerAdapter @Inject constructor(
                 SortType.MOST_PLAYED -> R.string.ranking_sort_type_total_played
             }
         )
-        holder.text.setOnClickListener { onClickItem(sortTypes[position]) }
+        holder.card.setOnClickListener { onClickItem(sortTypes[position]) }
     }
 
     fun setOnClickListener(onClick: (SortType) -> Unit) {
@@ -42,5 +42,6 @@ class RankingSortTypeDialogRecyclerAdapter @Inject constructor(
 
     class RankingSortViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val text: TextView = itemView.findViewById(R.id.recycler_text_view_item)
+        val card: CardView = itemView.findViewById(R.id.recycler_text_view_card)
     }
 }

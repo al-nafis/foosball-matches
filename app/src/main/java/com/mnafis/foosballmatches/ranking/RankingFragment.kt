@@ -86,9 +86,18 @@ class RankingFragment : Fragment() {
 
     private fun setupPlayerList() {
         val recyclerView = activity?.findViewById<RecyclerView>(R.id.fragment_ranking_recycler_view)
+        val emptyListMessageTextView = activity?.findViewById<TextView>(R.id.fragment_ranking_list_empty_message)
         recyclerView?.layoutManager = LinearLayoutManager(activity)
         recyclerView?.adapter = rankingRecyclerAdapter
+
         viewModel.players.observe(viewLifecycleOwner) { players ->
+            if (players.isEmpty()) {
+                emptyListMessageTextView?.visibility = View.VISIBLE
+                recyclerView?.visibility = View.GONE
+            } else {
+                emptyListMessageTextView?.visibility = View.GONE
+                recyclerView?.visibility = View.VISIBLE
+            }
             rankingRecyclerAdapter.setData(players)
         }
     }
