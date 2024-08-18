@@ -1,7 +1,7 @@
 # Foosball Matches App
 <img src="https://github.com/user-attachments/assets/d97e68c6-c8fb-40d8-8efb-e9d7e94b96ac" width="200" />
 
-This app demonstrates the skill set that includes Kotlin, Android Jetpack, RxJava2, MVVM, Dagger, Room etc.
+This app showcases a skill set that includes Kotlin, Android Jetpack, RxJava2, MVVM, Dagger, Room, and more.
 
 ## Notes
   - In RxJava2 subscriptions, ```Schedulers.single()``` was used on ```observerOn()``` instead of ```AndroidSchedulers.mainThread()``` due to difficulties adding the RxAndroid2 dependency.
