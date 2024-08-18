@@ -4,33 +4,27 @@
 This app demonstrates the skill set that includes Kotlin, Android Jetpack, RxJava2, MVVM, Dagger, Room etc.
 
 ## Notes
-  - On RxJava2 subscriptions, I used ```Schedulers.single()``` on ```observerOn()``` instead of ```AndroidSchedulers.mainThread()``` since there were difficulties adding the dependency(RxAndroid2).
-  - The interfaces ```PlayersRepository``` and ```MatchesRepository``` are the blueprints of the repository implementation. Using them, we can come up with different solutions to data storage. For now, Room is being used to store data locally with one of the implementation(```PlayersDatabaseManager``` and ```MatchesDatabaseManager```). For future, we can utilize this interface to create an API integration to store data remotely
+  - In RxJava2 subscriptions, ```Schedulers.single()``` was used on ```observerOn()``` instead of ```AndroidSchedulers.mainThread()``` due to difficulties adding the RxAndroid2 dependency.
+The interfaces ```PlayersRepository``` and ```MatchesRepository``` serve as blueprints for repository implementation. These interfaces allow for various data storage solutions. Currently, Room is used for local data storage via the ```PlayersDatabaseManager``` and ```MatchesDatabaseManager``` implementations. In the future, these interfaces can be utilized for API integration to store data remotely.
 
 ## Screen Definition and Design Justification
-  - Matches
-      - Lists the matches 
-  - Add New Match:
-      - A tied score is not allowed, thus user cannot submit with a tied score
-  - Match Edit:
-      - Re-selecting the players is not allowed
-      - Deleting a match also updates the associated wins, losses and total played values of the players
-  - Ranking:
-      - Sorting by wins, losses and most played matches
-  - Players
-      - List the players
-  - Add New Player:
-      - Duplicated ID is not allowed
-  - Edit Player:
-      - Editing employee id is not allowed
-      - Deleting a player also deletes the matches the player participated, but it does not affect any other players' stats
-  - Settings:
-      - Developer Settings to generate sample data or clear the database
+### Matches
+- List Matches: Displays the list of matches.
+- Add New Match: Tied scores are not allowed, so submission with a tied score is prevented.
+- Edit Match: Re-selecting players is not permitted. Deleting a match updates the associated players' wins, losses, and total played values.
+### Players
+- List Players: Displays the list of players.
+- Add New Player: Duplicate IDs are not allowed.
+- Edit Player: Editing the employee ID is not permitted. Deleting a player also removes the matches they participated in, without affecting other players' stats.
+### Ranking
+- Ranking: Sorts by wins, losses, and most played matches.
+### Settings
+- Developer Settings: Provides options to generate sample data or clear the database.
 
 ## Room for Improvements
-  - For ranking screen: daily, weekly, and monthly ranking view
-  - Inline Error messages
-  - Confirmation prompts during data deletion
+- Add daily, weekly, and monthly ranking views for the ranking screen.
+- Implement inline error messages.
+- Add confirmation prompts during data deletion.
 
 ## Screenshots
 
