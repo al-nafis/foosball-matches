@@ -4,8 +4,8 @@
 This app showcases a skill set that includes Kotlin, Android Jetpack, RxJava2, MVVM, Dagger, Room, and more.
 
 ## Notes
-  - In RxJava2 subscriptions, ```Schedulers.single()``` was used on ```observerOn()``` instead of ```AndroidSchedulers.mainThread()``` due to difficulties adding the RxAndroid2 dependency.
-The interfaces ```PlayersRepository``` and ```MatchesRepository``` serve as blueprints for repository implementation. These interfaces allow for various data storage solutions. Currently, Room is used for local data storage via the ```PlayersDatabaseManager``` and ```MatchesDatabaseManager``` implementations. In the future, these interfaces can be utilized for API integration to store data remotely.
+- In RxJava2 subscriptions, ```Schedulers.single()``` was used on ```observerOn()``` instead of ```AndroidSchedulers.mainThread()``` due to difficulties adding the RxAndroid2 dependency.
+- The interfaces ```PlayersRepository``` and ```MatchesRepository``` serve as blueprints for repository implementation. These interfaces allow for various data storage solutions. Currently, Room is used for local data storage via the ```PlayersDatabaseManager``` and ```MatchesDatabaseManager``` implementations. In the future, these interfaces can be utilized for API integration to store data remotely.
 
 ## Screen Definition and Design Justification
 ### Matches
