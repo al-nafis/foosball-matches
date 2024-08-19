@@ -47,6 +47,8 @@
     <string name="activity_player_details_error_message_name">Name missing</string>
     <string name="activity_player_details_error_message_duplicate_id">Duplicate Employee Id</string>
     <string name="fragment_matches_list_empty_message">There are no matches added. Try adding one</string>
-    <string name="players_list_empty_message">There are no player added. Try adding one</string>
-    <string name="players_list_empty_message_title">No Players</string>
+    <string name="players_list_empty_message">There are no players added. Try adding one</string>
+    <string name="players_list_not_enough_players_message">There should be at least 2 players added to create a match</string>
+    <string name="players_list_empty_message_title">Not Enough Players</string>
+    <string name="players_list_dialog_dismiss_button">Okay</string>
 </resources>

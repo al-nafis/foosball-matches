@@ -15,13 +15,15 @@ import com.mnafis.foosballmatches.FoosballApplication
 import com.mnafis.foosballmatches.MainActivity
 import com.mnafis.foosballmatches.R
 import com.mnafis.foosballmatches.ToolbarTrailerIcon
+import com.mnafis.foosballmatches.ViewModelFactory
+import com.mnafis.foosballmatches.database.players.PlayersRepository
 import com.mnafis.foosballmatches.players.details.PlayerDetailsActivity
 import javax.inject.Inject
 
 class PlayersFragment : Fragment() {
 
     @Inject
-    lateinit var playersViewModelFactory: PlayersViewModelFactory
+    lateinit var playersRepository: PlayersRepository
 
     @Inject
     lateinit var playersRecyclerAdapter: PlayersRecyclerAdapter
@@ -40,7 +42,10 @@ class PlayersFragment : Fragment() {
         super.onAttach(context)
 
         (activity?.application as FoosballApplication).appComponent.inject(this)
-        viewModel = ViewModelProvider(this, playersViewModelFactory)[PlayersViewModel::class]
+
+        viewModel = ViewModelProvider(this, ViewModelFactory {
+            PlayersViewModel(playersRepository)
+        })[PlayersViewModel::class]
     }
 
     override fun onResume() {

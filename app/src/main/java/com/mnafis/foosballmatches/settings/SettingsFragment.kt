@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.mnafis.foosballmatches.FoosballApplication
 import com.mnafis.foosballmatches.MainActivity
 import com.mnafis.foosballmatches.R
+import com.mnafis.foosballmatches.ViewModelFactory
 import com.mnafis.foosballmatches.database.matches.MatchesRepository
 import com.mnafis.foosballmatches.database.players.PlayersRepository
 import javax.inject.Inject
@@ -21,9 +22,6 @@ class SettingsFragment : Fragment() {
 
     @Inject
     lateinit var matchesRepository: MatchesRepository
-
-    @Inject
-    lateinit var settingsViewModelFactory: SettingsViewModelFactory
 
     private lateinit var viewModel: SettingsViewModel
 
@@ -39,7 +37,15 @@ class SettingsFragment : Fragment() {
         super.onAttach(context)
 
         (activity?.application as FoosballApplication).appComponent.inject(this)
-        viewModel = ViewModelProvider(this, settingsViewModelFactory)[SettingsViewModel::class]
+
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelFactory {
+                SettingsViewModel(
+                    matchesRepository,
+                    playersRepository
+                )
+            })[SettingsViewModel::class]
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

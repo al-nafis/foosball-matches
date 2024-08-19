@@ -14,13 +14,19 @@ import com.mnafis.foosballmatches.FoosballApplication
 import com.mnafis.foosballmatches.R
 import com.mnafis.foosballmatches.ToolbarNavigationIcon
 import com.mnafis.foosballmatches.ToolbarTrailerIcon
+import com.mnafis.foosballmatches.ViewModelFactory
+import com.mnafis.foosballmatches.database.matches.MatchesRepository
+import com.mnafis.foosballmatches.database.players.PlayersRepository
 import com.mnafis.foosballmatches.models.Player
 import javax.inject.Inject
 
 class PlayerDetailsActivity : BaseActivity() {
 
     @Inject
-    lateinit var viewModelFactory: PlayerDetailsViewModelFactory
+    lateinit var playersRepository: PlayersRepository
+
+    @Inject
+    lateinit var matchesRepository: MatchesRepository
 
     lateinit var viewModel: PlayerDetailsViewModel
 
@@ -29,7 +35,17 @@ class PlayerDetailsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         (applicationContext as FoosballApplication).appComponent.inject(this)
-        viewModel = ViewModelProvider(this, viewModelFactory)[PlayerDetailsViewModel::class]
+
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelFactory {
+                PlayerDetailsViewModel(
+                    matchesRepository,
+                    playersRepository
+                )
+            }
+        )[PlayerDetailsViewModel::class]
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_player_details)

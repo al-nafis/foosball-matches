@@ -19,6 +19,9 @@ import com.mnafis.foosballmatches.FoosballApplication
 import com.mnafis.foosballmatches.R
 import com.mnafis.foosballmatches.ToolbarNavigationIcon
 import com.mnafis.foosballmatches.ToolbarTrailerIcon
+import com.mnafis.foosballmatches.ViewModelFactory
+import com.mnafis.foosballmatches.database.matches.MatchesRepository
+import com.mnafis.foosballmatches.database.players.PlayersRepository
 import com.mnafis.foosballmatches.matches.details.MatchDetailsViewModel.ErrorType
 import com.mnafis.foosballmatches.models.DateInfo
 import com.mnafis.foosballmatches.models.Match
@@ -30,7 +33,10 @@ import javax.inject.Inject
 class MatchDetailsActivity : BaseActivity() {
 
     @Inject
-    lateinit var viewModelFactory: MatchDetailsViewModelFactory
+    lateinit var playersRepository: PlayersRepository
+
+    @Inject
+    lateinit var matchesRepository: MatchesRepository
 
     @Inject
     lateinit var playerItemAdapter: MatchesDetailsPlayersDialogRecyclerAdapter
@@ -45,7 +51,14 @@ class MatchDetailsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         (applicationContext as FoosballApplication).appComponent.inject(this)
-        viewModel = ViewModelProvider(this, viewModelFactory)[MatchDetailsViewModel::class]
+
+        viewModel = ViewModelProvider(this, ViewModelFactory {
+            MatchDetailsViewModel(
+                matchesRepository,
+                playersRepository
+            )
+        })[MatchDetailsViewModel::class]
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_match_details)

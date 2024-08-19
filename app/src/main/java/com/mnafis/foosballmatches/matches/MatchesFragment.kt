@@ -16,12 +16,18 @@ import com.mnafis.foosballmatches.FoosballApplication
 import com.mnafis.foosballmatches.MainActivity
 import com.mnafis.foosballmatches.R
 import com.mnafis.foosballmatches.ToolbarTrailerIcon
+import com.mnafis.foosballmatches.ViewModelFactory
+import com.mnafis.foosballmatches.database.matches.MatchesRepository
+import com.mnafis.foosballmatches.database.players.PlayersRepository
 import com.mnafis.foosballmatches.matches.details.MatchDetailsActivity
 import javax.inject.Inject
 
 class MatchesFragment : Fragment() {
     @Inject
-    lateinit var matchesViewModelFactory: MatchesViewModelFactory
+    lateinit var playersRepository: PlayersRepository
+
+    @Inject
+    lateinit var matchesRepository: MatchesRepository
 
     @Inject
     lateinit var matchesRecyclerAdapter: MatchesRecyclerAdapter
@@ -32,7 +38,13 @@ class MatchesFragment : Fragment() {
         super.onAttach(context)
 
         (activity?.application as FoosballApplication).appComponent.inject(this)
-        viewModel = ViewModelProvider(this, matchesViewModelFactory)[MatchesViewModel::class]
+
+        viewModel = ViewModelProvider(this, ViewModelFactory {
+            MatchesViewModel(
+                matchesRepository,
+                playersRepository
+            )
+        })[MatchesViewModel::class]
     }
 
     override fun onCreateView(
@@ -60,11 +72,12 @@ class MatchesFragment : Fragment() {
         val activity = activity as MainActivity
         activity.setToolbarTitle(R.string.menu_title_matches)
         activity.setToolbarTrailerIcon(ToolbarTrailerIcon.ADD) {
-            if (viewModel.matchesAndPlayers.value?.second?.isEmpty() == true) {
+            val players = viewModel.matchesAndPlayers.value?.second
+            if (players == null || players.size < 2) {
                 AlertDialog.Builder(activity)
                     .setTitle(getString(R.string.players_list_empty_message_title))
-                    .setMessage(getString(R.string.players_list_empty_message))
-                    .setPositiveButton("Okay") { dialog, _ ->
+                    .setMessage(getString(R.string.players_list_not_enough_players_message))
+                    .setPositiveButton(getString(R.string.players_list_dialog_dismiss_button)) { dialog, _ ->
                         dialog.dismiss()
                     }.create()
                     .show()

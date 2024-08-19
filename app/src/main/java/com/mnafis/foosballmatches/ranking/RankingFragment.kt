@@ -15,12 +15,14 @@ import com.mnafis.foosballmatches.FoosballApplication
 import com.mnafis.foosballmatches.MainActivity
 import com.mnafis.foosballmatches.R
 import com.mnafis.foosballmatches.ToolbarTrailerIcon
+import com.mnafis.foosballmatches.ViewModelFactory
+import com.mnafis.foosballmatches.database.players.PlayersRepository
 import javax.inject.Inject
 
 class RankingFragment : Fragment() {
 
     @Inject
-    lateinit var rankingViewModelFactory: RankingViewModelFactory
+    lateinit var playersRepository: PlayersRepository
 
     @Inject
     lateinit var rankingRecyclerAdapter: RankingRecyclerAdapter
@@ -34,7 +36,10 @@ class RankingFragment : Fragment() {
         super.onAttach(context)
 
         (activity?.application as FoosballApplication).appComponent.inject(this)
-        viewModel = ViewModelProvider(this, rankingViewModelFactory)[RankingViewModel::class]
+
+        viewModel = ViewModelProvider(this, ViewModelFactory {
+            RankingViewModel(playersRepository)
+        })[RankingViewModel::class]
     }
 
     override fun onCreateView(
