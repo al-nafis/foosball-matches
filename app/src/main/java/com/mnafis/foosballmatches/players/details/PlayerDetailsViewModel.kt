@@ -3,15 +3,11 @@ package com.mnafis.foosballmatches.players.details
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mnafis.foosballmatches.BaseViewModel
-import com.mnafis.foosballmatches.database.matches.MatchesRepository
 import com.mnafis.foosballmatches.database.players.PlayerIdExistsException
 import com.mnafis.foosballmatches.database.players.PlayersRepository
-import com.mnafis.foosballmatches.models.Match
 import com.mnafis.foosballmatches.models.Player
-import io.reactivex.Observable
 
 class PlayerDetailsViewModel(
-    private val matchesRepository: MatchesRepository,
     private val playersRepository: PlayersRepository
 ) : BaseViewModel() {
     private val _onSuccessSubmit = MutableLiveData<Boolean>()
@@ -29,18 +25,11 @@ class PlayerDetailsViewModel(
     var isEdit = false
     var editablePlayer: Player? = null
     var players = emptyList<Player>()
-    var matches = emptyList<Match>()
 
     init {
         this addDisposable playersRepository.getAllPlayers()
             .subscribe(
                 { players = it },
-                { it.printStackTrace() }
-            )
-
-        this addDisposable matchesRepository.getAllMatches()
-            .subscribe(
-                { matches = it },
                 { it.printStackTrace() }
             )
     }
@@ -75,17 +64,8 @@ class PlayerDetailsViewModel(
     }
 
     fun deletePlayer() {
-        val filteredMatches = matches.filter {
-            it.player1Id == editablePlayer?.employeeId
-                    || it.player2Id == editablePlayer?.employeeId
-        }
         this addDisposable playersRepository.deletePlayer(editablePlayer!!)
-            .andThen(
-                Observable.fromIterable(filteredMatches)
-                    .concatMapCompletable {
-                        matchesRepository.deleteMatch(it)
-                    }
-            ).subscribe(
+            .subscribe(
                 { _onSuccessSubmit.postValue(true) },
                 { _errorMessage.postValue(ErrorType.GENERIC) }
             )

@@ -21,6 +21,7 @@
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/match_details_error_text"
         app:layout_constraintTop_toBottomOf="@id/activity_match_details_toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -281,6 +282,7 @@
         tools:text="Error"
         android:textColor="@color/error"
         android:layout_marginHorizontal="@dimen/page_margin_horizontal"
+        android:layout_marginVertical="@dimen/page_margin_horizontal_xl"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/match_details_button_submit" />
@@ -291,6 +293,7 @@
         android:layout_height="wrap_content"
         android:text="@string/button_submit"
         android:paddingVertical="@dimen/page_margin_horizontal"
+        android:layout_marginVertical="@dimen/page_margin_horizontal_xl"
         android:layout_marginHorizontal="@dimen/page_margin_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"/>
 

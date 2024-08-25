@@ -15,7 +15,6 @@ import com.mnafis.foosballmatches.R
 import com.mnafis.foosballmatches.ToolbarNavigationIcon
 import com.mnafis.foosballmatches.ToolbarTrailerIcon
 import com.mnafis.foosballmatches.ViewModelFactory
-import com.mnafis.foosballmatches.database.matches.MatchesRepository
 import com.mnafis.foosballmatches.database.players.PlayersRepository
 import com.mnafis.foosballmatches.models.Player
 import javax.inject.Inject
@@ -24,9 +23,6 @@ class PlayerDetailsActivity : BaseActivity() {
 
     @Inject
     lateinit var playersRepository: PlayersRepository
-
-    @Inject
-    lateinit var matchesRepository: MatchesRepository
 
     lateinit var viewModel: PlayerDetailsViewModel
 
@@ -39,10 +35,7 @@ class PlayerDetailsActivity : BaseActivity() {
         viewModel = ViewModelProvider(
             this,
             ViewModelFactory {
-                PlayerDetailsViewModel(
-                    matchesRepository,
-                    playersRepository
-                )
+                PlayerDetailsViewModel(playersRepository)
             }
         )[PlayerDetailsViewModel::class]
 
