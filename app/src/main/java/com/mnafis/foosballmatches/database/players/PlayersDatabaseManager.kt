@@ -42,7 +42,7 @@ class PlayersDatabaseManager @Inject constructor(
     }.andThen(
         deleteAndGetMatchesPlayedByPlayer(player)
     ).flatMapCompletable { matches ->
-        updateOpponentsStats(matches, player)
+        updateOpponentsStatsAfterPlayerDeletion(matches, player)
     }.addDataBaseSchedulers()
 
     override fun deleteAllPlayers() = Completable.fromCallable {
@@ -65,7 +65,7 @@ class PlayersDatabaseManager @Inject constructor(
             match
         }.toList()
 
-    private fun updateOpponentsStats(matches: List<Match>, player: Player): Completable =
+    private fun updateOpponentsStatsAfterPlayerDeletion(matches: List<Match>, player: Player): Completable =
         Observable.fromIterable(matches)
             .map { match ->
                 val opponentId = if (match.player1Id == player.employeeId) {

@@ -27,10 +27,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/match_card_view_player1_id"
             app:layout_constraintEnd_toEndOf="@id/match_card_view_score_guideline"
             android:layout_marginEnd="30dp"
             tools:text="John" />
+
+        <TextView
+            android:id="@+id/match_card_view_player1_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/match_card_view_player1_name"
+            app:layout_constraintEnd_toEndOf="@id/match_card_view_score_guideline"
+            android:layout_marginEnd="30dp"
+            tools:text="154987" />
 
         <TextView
             android:id="@+id/match_card_view_score"
@@ -47,10 +56,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/match_card_view_player1_id"
             app:layout_constraintStart_toStartOf="@id/match_card_view_score_guideline"
             android:layout_marginStart="30dp"
             tools:text="Andy" />
+
+        <TextView
+            android:id="@+id/match_card_view_player2_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/match_card_view_player2_name"
+            app:layout_constraintStart_toStartOf="@id/match_card_view_score_guideline"
+            android:layout_marginStart="30dp"
+            tools:text="154987" />
 
         <ImageView
             android:id="@+id/match_card_view_edit_button"

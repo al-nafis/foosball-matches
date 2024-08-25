@@ -8,11 +8,10 @@ import com.mnafis.foosballmatches.database.players.PlayersRepository
 import com.mnafis.foosballmatches.models.DateInfo
 import com.mnafis.foosballmatches.models.Match
 import com.mnafis.foosballmatches.models.Player
-import io.reactivex.Completable
 
 class MatchDetailsViewModel(
     private val matchesRepository: MatchesRepository,
-    private val playersRepository: PlayersRepository
+    playersRepository: PlayersRepository
 ) : BaseViewModel() {
     private val _onSuccessSubmit = MutableLiveData<Boolean>()
     val onSuccessSubmit: LiveData<Boolean> = _onSuccessSubmit
@@ -51,96 +50,49 @@ class MatchDetailsViewModel(
 
     fun submit() {
         if (validate()) {
-            val (winner: Player, loser: Player) = getMatchStat()
-            this addDisposable
-                    if (isEdit) {
-                        matchesRepository.updateMatch(
-                            Match(
-                                id = editableMatch!!.id,
-                                dateInfo = _date.value!!,
-                                player1Id = player1.value!!.employeeId,
-                                player1Score = player1Score.value!!,
-                                player2Id = player2.value!!.employeeId,
-                                player2Score = player2Score.value!!,
-                                winnerId = winner.employeeId
-                            )
-                        ).andThen(
-                            if (editableMatch!!.winnerId != winner.employeeId) {
-                                playersRepository.updatePlayer(
-                                    winner.copy(
-                                        wins = winner.wins + 1,
-                                        losses = if (winner.losses > 0) winner.losses - 1 else 0
-                                    )
-                                )
-                            } else Completable.complete()
-                        ).andThen(
-                            if (editableMatch!!.winnerId != winner.employeeId) {
-                                playersRepository.updatePlayer(
-                                    loser.copy(
-                                        wins = if (loser.wins > 0) loser.wins - 1 else 0,
-                                        losses = loser.losses + 1
-                                    )
-                                )
-                            } else Completable.complete()
-                        ).subscribe(
-                            { _onSuccessSubmit.postValue(true) },
-                            { _errorMessage.postValue(ErrorType.GENERIC) }
-                        )
-                    } else {
-                        matchesRepository.addNewMatch(
-                            Match(
-                                id = System.currentTimeMillis(),
-                                dateInfo = _date.value!!,
-                                player1Id = player1.value!!.employeeId,
-                                player1Score = player1Score.value!!,
-                                player2Id = player2.value!!.employeeId,
-                                player2Score = player2Score.value!!,
-                                winnerId = winner.employeeId
-                            )
-                        ).andThen(
-                            playersRepository.updatePlayer(
-                                winner.copy(
-                                    totalMatchesPlayed = winner.totalMatchesPlayed + 1,
-                                    wins = winner.wins + 1
-                                )
-                            )
-                        ).andThen(
-                            playersRepository.updatePlayer(
-                                loser.copy(
-                                    totalMatchesPlayed = loser.totalMatchesPlayed + 1,
-                                    losses = loser.losses + 1
-                                )
-                            )
-                        ).subscribe(
-                            { _onSuccessSubmit.postValue(true) },
-                            { _errorMessage.postValue(ErrorType.GENERIC) }
-                        )
-                    }
+            //Assuming in Foosball, there can not be a tie since the first to score a certain amount of goals wins
+            val winnerId = if (player1Score.value!! > player2Score.value!!) {
+                player1.value!!.employeeId
+            } else {
+                player2.value!!.employeeId
+            }
+            this addDisposable if (isEdit) {
+                matchesRepository.updateMatch(
+                    Match(
+                        id = editableMatch!!.id,
+                        dateInfo = _date.value!!,
+                        player1Id = player1.value!!.employeeId,
+                        player1Score = player1Score.value!!,
+                        player2Id = player2.value!!.employeeId,
+                        player2Score = player2Score.value!!,
+                        winnerId = winnerId
+                    )
+                )
+            } else {
+                matchesRepository.addNewMatch(
+                    Match(
+                        id = System.currentTimeMillis(),
+                        dateInfo = _date.value!!,
+                        player1Id = player1.value!!.employeeId,
+                        player1Score = player1Score.value!!,
+                        player2Id = player2.value!!.employeeId,
+                        player2Score = player2Score.value!!,
+                        winnerId = winnerId
+                    )
+                )
+            }.subscribe(
+                { _onSuccessSubmit.postValue(true) },
+                { _errorMessage.postValue(ErrorType.GENERIC) }
+            )
         }
     }
 
     fun deleteMatch() {
-        val (winner: Player, loser: Player) = getMatchStat()
-        this addDisposable
-                matchesRepository.deleteMatch(editableMatch!!)
-                    .andThen(
-                        playersRepository.updatePlayer(
-                            winner.copy(
-                                totalMatchesPlayed = winner.totalMatchesPlayed - 1,
-                                wins = winner.wins - 1
-                            )
-                        )
-                    ).andThen(
-                        playersRepository.updatePlayer(
-                            loser.copy(
-                                totalMatchesPlayed = loser.totalMatchesPlayed - 1,
-                                losses = loser.losses - 1
-                            )
-                        )
-                    ).subscribe(
-                        { _onSuccessSubmit.postValue(true) },
-                        { _errorMessage.postValue(ErrorType.GENERIC) }
-                    )
+        this addDisposable matchesRepository.deleteMatch(editableMatch!!)
+            .subscribe(
+                { _onSuccessSubmit.postValue(true) },
+                { _errorMessage.postValue(ErrorType.GENERIC) }
+            )
     }
 
     fun setDate(dateInfo: DateInfo) {
@@ -161,23 +113,6 @@ class MatchDetailsViewModel(
 
     fun setPlayer2Score(score: Int?) {
         _player2Score.value = score
-    }
-
-    /**
-     * Assuming in Foosball, there can not be a tie since the first to score a certain amount of goals wins
-     */
-    private fun getMatchStat(): Pair<Player, Player> {
-        val winner: Player
-        val loser: Player
-
-        if (player1Score.value!! > player2Score.value!!) {
-            winner = player1.value!!
-            loser = player2.value!!
-        } else {
-            winner = player2.value!!
-            loser = player1.value!!
-        }
-        return Pair(winner, loser)
     }
 
     private fun validate(): Boolean {

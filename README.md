@@ -48,8 +48,8 @@ This app showcases a skill set that includes Kotlin, Android Jetpack, RxJava2, M
 ### Add New Player
 <img src="https://github.com/user-attachments/assets/70170555-c073-407d-801f-b6dd142eed67" width="300" />
 
-### Edit Player(player id section is disabled in this screen)
+### Edit Player (player id section is disabled in this screen)
 <img src="https://github.com/user-attachments/assets/96351945-513d-4155-882b-c9d6ac186fb8" width="300" />
 
-### Settings(quick options to populate with sample data and clear it)
+### Settings (quick options to populate with sample data and clear it)
 <img src="https://github.com/user-attachments/assets/cdb934a2-2733-42b7-b135-48a366538fca" width="300" />

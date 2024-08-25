@@ -26,7 +26,7 @@
     <string name="activity_match_details_error_message_score_tied">Scores cannot be tied. There should be a winner</string>
     <string name="activity_match_details_error_message_same_player">Same players are selected as both player 1 and player 2</string>
     <string name="fragment_ranking_header_rank">Rank</string>
-    <string name="fragment_ranking_header_name">Name</string>
+    <string name="fragment_ranking_header_name">Name/Id</string>
     <string name="fragment_ranking_header_total_played">Total Played</string>
     <string name="fragment_ranking_header_wins">Wins</string>
     <string name="fragment_ranking_header_losses">Losses</string>
