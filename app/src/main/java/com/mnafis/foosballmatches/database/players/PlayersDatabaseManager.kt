@@ -46,11 +46,11 @@ class PlayersDatabaseManager(
 
     private fun Completable.addDataBaseSchedulers(): Completable =
         this.subscribeOn(rxSchedulerProvider.ioScheduler)
-            .observeOn(rxSchedulerProvider.singleScheduler)
+            .observeOn(rxSchedulerProvider.androidMainThread)
 
     private fun <T : Any> Single<T>.addDataBaseSchedulers(): Single<T> =
         this.subscribeOn(rxSchedulerProvider.ioScheduler)
-            .observeOn(rxSchedulerProvider.singleScheduler)
+            .observeOn(rxSchedulerProvider.androidMainThread)
 }
 
 data class PlayerIdExistsException(val id: Int) : Exception()

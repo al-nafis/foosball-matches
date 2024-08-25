@@ -58,4 +58,5 @@ dependencies {
 
     //rxjava
     implementation (libs.rxjava)
+    implementation (libs.rxandroid)
 }
