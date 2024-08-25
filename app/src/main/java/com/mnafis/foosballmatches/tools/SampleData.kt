@@ -5,10 +5,10 @@ import com.mnafis.foosballmatches.models.Match
 import com.mnafis.foosballmatches.models.Player
 
 val samplePlayers = listOf(
-    Player(employeeId = 458925, name = "Amos", totalMatchesPlayed = 12, wins = 6, losses = 6),
-    Player(employeeId = 141411, name = "Diego", totalMatchesPlayed = 8, wins = 5, losses = 3),
     Player(employeeId = 981664, name = "Joel", totalMatchesPlayed = 3, wins = 1, losses = 2),
-    Player(employeeId = 629782, name = "Tim", totalMatchesPlayed = 5, wins = 2, losses = 3)
+    Player(employeeId = 141411, name = "Diego", totalMatchesPlayed = 8, wins = 5, losses = 3),
+    Player(employeeId = 629782, name = "Tim", totalMatchesPlayed = 5, wins = 2, losses = 3),
+    Player(employeeId = 458925, name = "Amos", totalMatchesPlayed = 12, wins = 6, losses = 6)
 )
 
 val sampleMatches = listOf(

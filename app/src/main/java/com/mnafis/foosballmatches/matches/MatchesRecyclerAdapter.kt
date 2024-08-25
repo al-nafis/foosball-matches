@@ -33,8 +33,10 @@ class MatchesRecyclerAdapter @Inject constructor(
         val match = matches[position]
         holder.date.text = getFormattedDate(match.dateInfo)
         holder.player1Name.text = players.find { it.employeeId == matches[position].player1Id }?.name
+        holder.player1Id.text = players.find { it.employeeId == matches[position].player1Id }?.employeeId.toString()
         holder.score.text = context.getString(R.string.match_card_view_score, match.player1Score, match.player2Score)
         holder.player2Name.text = players.find { it.employeeId == matches[position].player2Id }?.name
+        holder.player2Id.text = players.find { it.employeeId == matches[position].player2Id }?.employeeId.toString()
         holder.editButton.setOnClickListener { onClickItem(match) }
     }
 
@@ -52,8 +54,10 @@ class MatchesRecyclerAdapter @Inject constructor(
     class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val date: TextView = itemView.findViewById(R.id.match_card_view_date)
         val player1Name: TextView = itemView.findViewById(R.id.match_card_view_player1_name)
+        val player1Id: TextView = itemView.findViewById(R.id.match_card_view_player1_id)
         val score: TextView = itemView.findViewById(R.id.match_card_view_score)
         val player2Name: TextView = itemView.findViewById(R.id.match_card_view_player2_name)
+        val player2Id: TextView = itemView.findViewById(R.id.match_card_view_player2_id)
         val editButton: ImageView = itemView.findViewById(R.id.match_card_view_edit_button)
     }
 }

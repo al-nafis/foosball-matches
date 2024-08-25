@@ -1,6 +1,5 @@
 package com.mnafis.foosballmatches.settings
 
-import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mnafis.foosballmatches.BaseViewModel
@@ -42,7 +41,6 @@ class SettingsViewModel(
             )
     }
 
-    @SuppressLint("CheckResult")
     fun populateDatabase() {
         val disposable = CompositeDisposable()
         disposable.add(playersRepository.getAllPlayers()

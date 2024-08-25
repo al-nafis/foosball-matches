@@ -14,7 +14,7 @@ This app showcases a skill set that includes Kotlin, Android Jetpack, RxJava2, M
 ### Players
 - List Players: Displays the list of players.
 - Add New Player: Duplicate IDs are not allowed.
-- Edit Player: Editing the employee ID is not permitted. Deleting a player also removes the matches they participated in, without affecting other players' stats.
+- Edit Player: Editing the employee ID is not permitted. Deleting a player also removes the matches they participated in, also affecting other players' stats.
 ### Ranking
 - Ranking: Sorts by wins, losses, and most played matches.
 ### Settings
@@ -28,7 +28,7 @@ This app showcases a skill set that includes Kotlin, Android Jetpack, RxJava2, M
 ## Screenshots
 
 ### Matches Screen
-<img src="https://github.com/user-attachments/assets/cd868edc-1d6d-478c-b5be-df30d7f44abe" width="300" />
+<img src="https://github.com/user-attachments/assets/f0afc925-e964-4405-8b63-4a45af99ac8b" width="300" />
 
 ### Add New Match
 <img src="https://github.com/user-attachments/assets/9192416e-d591-415d-8cc2-8a78a2205b87" width="300" />
@@ -37,7 +37,7 @@ This app showcases a skill set that includes Kotlin, Android Jetpack, RxJava2, M
 <img src="https://github.com/user-attachments/assets/d330f4c2-2ebf-4c03-8fb7-7a101f53af8a" width="300" />
 
 ### Ranking
-<img src="https://github.com/user-attachments/assets/779947f9-99de-4c94-95dc-a6797da84c17" width="300" />
+<img src="https://github.com/user-attachments/assets/1e280df9-568b-40c7-84a7-5177b4b41062" width="300" />
 
 ### Ranking Sorting Type
 <img src="https://github.com/user-attachments/assets/ea0e110d-db1f-45e1-a6bd-1d5254a67474" width="300" />
@@ -48,8 +48,8 @@ This app showcases a skill set that includes Kotlin, Android Jetpack, RxJava2, M
 ### Add New Player
 <img src="https://github.com/user-attachments/assets/70170555-c073-407d-801f-b6dd142eed67" width="300" />
 
-### Edit Player(plauyer id section is disabled in this screen)
+### Edit Player (player id section is disabled in this screen)
 <img src="https://github.com/user-attachments/assets/96351945-513d-4155-882b-c9d6ac186fb8" width="300" />
 
-### Settings(quick options to poulate with sample data and clear it)
+### Settings (quick options to populate with sample data and clear it)
 <img src="https://github.com/user-attachments/assets/cdb934a2-2733-42b7-b135-48a366538fca" width="300" />

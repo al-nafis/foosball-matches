@@ -24,4 +24,7 @@ interface MatchesDAO {
 
     @Query("SELECT * FROM `Match`")
     fun getAllMatches(): List<Match>
+
+    @Query("SELECT * FROM `Match` WHERE id = :id")
+    fun getMatchById(id: Long): List<Match>
 }
