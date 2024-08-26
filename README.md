@@ -40,7 +40,7 @@ This app showcases a skill set that includes Kotlin, Android Jetpack, RxJava2, M
 <img src="https://github.com/user-attachments/assets/1e280df9-568b-40c7-84a7-5177b4b41062" width="300" />
 
 ### Ranking Sorting Type
-<img src="https://github.com/user-attachments/assets/ea0e110d-db1f-45e1-a6bd-1d5254a67474" width="300" />
+<img src="https://github.com/user-attachments/assets/bd9cb073-771f-4471-8cc1-ce7ddb9640cf" width="300" />
 
 ### Players
 <img src="https://github.com/user-attachments/assets/4687d911-e71b-4467-ac13-2033dd9cee42" width="300" />
